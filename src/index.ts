@@ -1,8 +1,13 @@
 import express from 'express';
-import { usersRouters } from './routes/users.routes';
+import { establishConnection } from './database/db';
+import { usersRoutes } from './routes/users.routes';
+
+establishConnection();
 
 const app = express();
 
-app.use('/users', usersRouters);
+app.use(express.json());
+
+app.use('/users', usersRoutes);
 
 export { app };

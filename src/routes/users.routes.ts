@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { createUserController } from '../module/users/useCases/createUser';
 
-const usersRouters = Router();
+const usersRoutes = Router();
 
-usersRouters.post('/', (request, response) => {
+usersRoutes.post('/', (request, response) => {
   createUserController.handle(request, response);
 });
 
-export { usersRouters };
+export { usersRoutes };

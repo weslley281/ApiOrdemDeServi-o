@@ -1,9 +1,4 @@
-import {
-  con,
-  establishConnection,
-  finishConnection,
-} from '../../../../database/db';
-import { IQueryDTO } from '../../DTO/IQueryDTO';
+import { con } from '../../../../database/db';
 import { User } from '../../model/User';
 import { ICreateUserDTO, IUserRepository } from '../IUsersPepository';
 
@@ -20,7 +15,6 @@ class UsersRepository implements IUserRepository {
 
   create({ name, phone, email, admin, created_at }: ICreateUserDTO): User {
     const user = new User();
-    establishConnection();
 
     Object.assign(user, {
       name,
@@ -30,18 +24,13 @@ class UsersRepository implements IUserRepository {
       created_at,
     });
 
-    const insert = `INSERT INTO users (name, phone, email, admin, created_at, updated_at) VALUES ("${name}", "${phone}", "${email}", "${admin}", "${created_at}")`;
+    const insert = `INSERT INTO users (name, phone, email, admin, created_at) VALUES ("${name}", "${phone}", "${email}", ${admin}, "${created_at}")`;
+    console.log('O sql gerado é ' + insert);
 
-    console.log(insert);
-
-    con.query(insert, ({ err, result }: IQueryDTO) => {
-      if (err) {
-        console.log(`Erro ao inserir usuário no banco\nDetalhes: ${err}`);
-      }
+    con.query(insert, function (err: any, result: any) {
+      if (err) throw err;
       console.log('Usuário cadastrado com sucesso');
     });
-
-    finishConnection(con);
 
     return user;
   }
@@ -50,9 +39,7 @@ class UsersRepository implements IUserRepository {
     let user: any;
     const select = `Select * FROM users WHERE user_id = "${user_id}"`;
 
-    establishConnection();
-
-    con.query(select, ({ err, result }: IQueryDTO) => {
+    con.query(select, (err: any, result: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
@@ -61,8 +48,6 @@ class UsersRepository implements IUserRepository {
 
       console.log('Usuários buscado com sucesso com sucesso');
     });
-
-    finishConnection(con);
 
     return user;
   }
@@ -71,9 +56,7 @@ class UsersRepository implements IUserRepository {
     let user: any;
     const select = `Select * FROM users WHERE email = "${email}"`;
 
-    establishConnection();
-
-    con.query(select, ({ err, result }: IQueryDTO) => {
+    con.query(select, (err: any, result: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
@@ -83,8 +66,6 @@ class UsersRepository implements IUserRepository {
       console.log('Usuários buscado com sucesso com sucesso');
     });
 
-    finishConnection(con);
-
     return user;
   }
 
@@ -92,9 +73,7 @@ class UsersRepository implements IUserRepository {
     let receivedUser: any;
     const update = `UPDATE users SET admin = ${user.admin} WHERE user_id = "${user.user_id}"`;
 
-    establishConnection();
-
-    con.query(update, ({ err, result }: IQueryDTO) => {
+    con.query(update, (err: any, result: any) => {
       if (err) {
         console.log(
           `Erro ao tornar usuário em administrado no banco\nDetalhes: ${err}`
@@ -106,8 +85,6 @@ class UsersRepository implements IUserRepository {
       }
     });
 
-    finishConnection(con);
-
     return receivedUser;
   }
 
@@ -115,9 +92,7 @@ class UsersRepository implements IUserRepository {
     let users: any;
     const select = `Select * FROM users`;
 
-    establishConnection();
-
-    con.query(select, ({ err, result }: IQueryDTO) => {
+    con.query(select, (err: any, result: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
@@ -126,8 +101,6 @@ class UsersRepository implements IUserRepository {
 
       console.log('Usuários buscado com sucesso com sucesso');
     });
-
-    finishConnection(con);
 
     return users;
   }

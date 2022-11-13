@@ -20,7 +20,7 @@ class CreateUserController {
 
       return response.status(201).json(user);
     } catch (error) {
-      console.log(request.body.name);
+      console.log(error);
       return response.status(400).json({ error: 'Erro ao cadastrar usuário' });
     }
   }
