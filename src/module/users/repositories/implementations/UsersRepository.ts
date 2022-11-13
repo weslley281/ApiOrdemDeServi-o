@@ -32,6 +32,8 @@ class UsersRepository implements IUserRepository {
 
     const insert = `INSERT INTO users (name, phone, email, admin, created_at, updated_at) VALUES ("${name}", "${phone}", "${email}", "${admin}", "${created_at}")`;
 
+    console.log(insert);
+
     con.query(insert, ({ err, result }: IQueryDTO) => {
       if (err) {
         console.log(`Erro ao inserir usuário no banco\nDetalhes: ${err}`);
