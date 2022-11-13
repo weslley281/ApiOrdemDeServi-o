@@ -13,7 +13,14 @@ class UsersRepository implements IUserRepository {
     return UsersRepository.INSTANCE;
   }
 
-  create({ name, phone, email, admin, created_at }: ICreateUserDTO): User {
+  create({
+    name,
+    phone,
+    email,
+    admin,
+    created_at,
+    encryptedpassword,
+  }: ICreateUserDTO): User {
     const user = new User();
 
     Object.assign(user, {
@@ -21,10 +28,11 @@ class UsersRepository implements IUserRepository {
       phone,
       email,
       admin,
+      encryptedpassword,
       created_at,
     });
 
-    const insert = `INSERT INTO users (name, phone, email, admin, created_at) VALUES ("${name}", "${phone}", "${email}", ${admin}, "${created_at}")`;
+    const insert = `INSERT INTO users (name, phone, email, admin, password, created_at) VALUES ("${name}", "${phone}", "${email}", ${admin}, "${encryptedpassword}", "${created_at}")`;
     console.log('O sql gerado é ' + insert);
 
     con.query(insert, function (err: any, result: any) {

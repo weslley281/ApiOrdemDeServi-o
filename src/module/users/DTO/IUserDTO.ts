@@ -4,6 +4,7 @@ interface ICreateUserDTO {
   phone: string;
   email: string;
   admin: boolean;
+  encryptedpassword: string;
   created_at: string;
 }
 

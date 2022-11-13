@@ -1,4 +1,5 @@
 import { Response, Request } from 'express';
+import { encryptPassword } from '../encryptPassword/encryptPassword';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 class CreateUserController {
@@ -6,15 +7,16 @@ class CreateUserController {
 
   handle(request: Request, response: Response): Response {
     try {
-      const { name, phone, email, admin, created_at } = request.body;
+      const { name, phone, email, admin, password, created_at } = request.body;
 
-      console.log(name, phone, email, admin, created_at);
+      const encryptedpassword = encryptPassword(password);
 
       const user = this.createUserUseCase.execute({
         name,
         phone,
         email,
         admin,
+        encryptedpassword,
         created_at,
       });
 
