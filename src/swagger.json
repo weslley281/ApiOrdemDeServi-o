@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ferraz Order of Service",
+    "description": "This is an application for create Order of Service",
+    "version": "1.0.0",
+    "contact": {
+      "email": "weslleyhenrique800@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User management"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "To create a new user, add the name, phone, email, admin, password, and created_at fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "phone",
+                  "email",
+                  "admin",
+                  "password",
+                  "created_at"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "admin": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Fulano de Tal",
+                  "phone": "(65)99123-4567",
+                  "email": "fulano@gmail.com",
+                  "admin": false,
+                  "password": "123",
+                  "created_at": "2022-11-13"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}
