@@ -35,7 +35,7 @@ class UsersRepository implements IUserRepository {
     const insert = `INSERT INTO users (name, phone, email, admin, password, created_at) VALUES ("${name}", "${phone}", "${email}", ${admin}, "${encryptedpassword}", "${created_at}")`;
     console.log('O sql gerado é ' + insert);
 
-    con.query(insert, function (err: any, result: any) {
+    con.query(insert, function (err: any, rows: any) {
       if (err) throw err;
       console.log('Usuário cadastrado com sucesso');
     });
@@ -47,12 +47,12 @@ class UsersRepository implements IUserRepository {
     let user: any;
     const select = `Select * FROM users WHERE user_id = "${user_id}"`;
 
-    con.query(select, (err: any, result: any) => {
+    con.query(select, (err: any, rows: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
 
-      user = result;
+      user = rows;
 
       console.log('Usuários buscado com sucesso com sucesso');
     });
@@ -62,14 +62,14 @@ class UsersRepository implements IUserRepository {
 
   findByEmail(email: string): User {
     let user: any;
-    const select = `Select * FROM users WHERE email = "${email}"`;
+    const select = `Select * FROM users WHERE user_id = "${email}"`;
 
-    con.query(select, (err: any, result: any) => {
+    con.query(select, (err: any, rows: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
 
-      user = result;
+      user = rows;
 
       console.log('Usuários buscado com sucesso com sucesso');
     });
@@ -81,13 +81,13 @@ class UsersRepository implements IUserRepository {
     let receivedUser: any;
     const update = `UPDATE users SET admin = ${user.admin} WHERE user_id = "${user.user_id}"`;
 
-    con.query(update, (err: any, result: any) => {
+    con.query(update, (err: any, rows: any) => {
       if (err) {
         console.log(
           `Erro ao tornar usuário em administrado no banco\nDetalhes: ${err}`
         );
 
-        receivedUser = result;
+        receivedUser = rows;
 
         console.log('Permissões de usuário alterado com sucesso com sucesso');
       }
@@ -100,12 +100,12 @@ class UsersRepository implements IUserRepository {
     let users: any;
     const select = `Select * FROM users`;
 
-    con.query(select, (err: any, result: any) => {
+    con.query(select, (err: any, rows: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
 
-      users = result;
+      users = rows;
 
       console.log('Usuários buscado com sucesso com sucesso');
     });

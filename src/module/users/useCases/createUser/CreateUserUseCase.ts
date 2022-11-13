@@ -22,6 +22,7 @@ class CreateUserUseCase {
     created_at,
   }: IRequest): User {
     const userAlreadyExists = this.usersRepository.findByEmail(email);
+    console.log('verdadeiro ? ' + userAlreadyExists);
 
     if (userAlreadyExists) throw new Error('User already exists');
 
