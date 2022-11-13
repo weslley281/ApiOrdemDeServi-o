@@ -6,8 +6,7 @@ class CreateUserController {
 
   handle(request: Request, response: Response): Response {
     try {
-      const { name, phone, email, admin, created_at, updated_at } =
-        request.body;
+      const { name, phone, email, admin, created_at } = request.body;
 
       const user = this.createUserUseCase.execute({
         name,
