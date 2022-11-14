@@ -21,9 +21,9 @@ class CreateUserController {
       });
 
       return response.status(201).json(user);
-    } catch (error) {
-      console.log(error);
-      return response.status(400).json({ error: 'Erro ao cadastrar usuário' });
+    } catch (error: any) {
+      console.log(`Erro ao cadastrar usuário, mais detalhes: ${error}`);
+      return response.status(400).json({ error: error.error });
     }
   }
 }

@@ -43,28 +43,47 @@ class UsersRepository implements IUserRepository {
     return user;
   }
 
-  findById(user_id: number): User {
+  async findById(user_id: number): Promise<User> {
     let user: any;
     const select = `Select * FROM users WHERE user_id = "${user_id}"`;
 
-    con.query(select, (err: any, rows: any) => {
+    const result = await con.query(select, (err: any, rows: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }
 
-      user = rows;
+      // const resultObject = Object.keys(rows).forEach(function (key) {
+      //   // console.log(JSON.stringify(rows[key]));
+      // });
 
       console.log('Usuários buscado com sucesso com sucesso');
+
+      const { name, phone, email } = rows[0];
+
+      const thisResults = {
+        name: name,
+        phone: phone,
+        email: email,
+      };
+
+      console.log(name, phone, email);
+      console.log(thisResults);
+
+      return thisResults;
     });
+
+    user = result;
+
+    console.log('Essas são as linhas ' + typeof result);
 
     return user;
   }
 
-  findByEmail(email: string): User {
+  async findByEmail(email: string): Promise<User> {
     let user: any;
     const select = `Select * FROM users WHERE user_id = "${email}"`;
 
-    con.query(select, (err: any, rows: any) => {
+    await con.query(select, (err: any, rows: any) => {
       if (err) {
         console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
       }

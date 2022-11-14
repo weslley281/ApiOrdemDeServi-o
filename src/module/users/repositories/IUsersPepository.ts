@@ -10,8 +10,8 @@ interface IUserRepository {
     encryptedpassword,
     created_at,
   }: ICreateUserDTO): User;
-  findById(user_id: number): User | undefined;
-  findByEmail(email: string): User | undefined;
+  findById(user_id: number): Promise<User>;
+  findByEmail(email: string): Promise<User>;
   turnAdmin(user: User): User;
   list(): User[];
 }
