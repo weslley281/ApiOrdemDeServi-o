@@ -8,6 +8,10 @@ const orderModel = connection.define('orders', {
     primaryKey: true,
     allowNull: false,
   },
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   description: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -16,15 +20,15 @@ const orderModel = connection.define('orders', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  Diagnosis: {
+  diagnosis: {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  WarrantyAndNotes: {
+  warrantyAndNotes: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  ServiceValue: {
+  serviceValue: {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
