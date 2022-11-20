@@ -28,7 +28,7 @@ class ClientsRepository implements IClientsRepository {
     document,
   }: IClientsDTO): Promise<Clients> {
     const [client, created]: any = await clientModel.findOrCreate({
-      where: { email: !email },
+      where: { email: email },
       defaults: {
         name,
         phone,
