@@ -19,7 +19,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "Create a new user",
-        "description": "To create a new user, add the name, phone, email, admin, password, and created_at fields in the request body.",
+        "description": "To create a new user, add the name, phone, email, birthday, admin and password fields in the request body.",
         "requestBody": {
           "required": true,
           "content": {
@@ -96,6 +96,92 @@
           },
           "404": {
             "description": "User not exists"
+          }
+        }
+      }
+    },
+    "/clients": {
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Create a new client",
+        "description": "To create a new client, add the name, phone, email, birthday, country, state, city, district, address, cep, and document fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "name",
+                  "phone",
+                  "email",
+                  "birthday",
+                  "country",
+                  "state",
+                  "city",
+                  "district",
+                  "address",
+                  "cep",
+                  "document"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "district": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "cep": {
+                    "type": "integer"
+                  },
+                  "document": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Comercio que comercializa alguma coisa LTDA - ME",
+                  "phone": "(65)3312-3456",
+                  "email": "comercio@gmail.com",
+                  "birthday": "2022-11-20",
+                  "country": "Brasil",
+                  "state": "Mato Grosso",
+                  "city": "Cuiabá",
+                  "district": "Centro",
+                  "address": "Rua Alguma coisa, 0",
+                  "cep": 12345678,
+                  "document": "12.345.678/0001-00"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
