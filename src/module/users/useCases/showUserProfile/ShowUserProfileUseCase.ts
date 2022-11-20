@@ -8,8 +8,8 @@ interface IRequest {
 class ShowUserProfileUseCase {
   constructor(private usersrepository: IUserRepository) {}
 
-  execute({ user_id }: IRequest): User | undefined {
-    const user = this.usersrepository.findById(user_id);
+  async execute({ user_id }: IRequest): Promise<User> {
+    const user = await this.usersrepository.findById(user_id);
 
     if (!user) throw new Error('User not exists');
 

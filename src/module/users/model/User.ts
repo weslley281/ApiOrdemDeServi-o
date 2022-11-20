@@ -3,6 +3,7 @@ class User {
   name: string | undefined;
   phone: string | undefined;
   email: string | undefined;
+  birthday: string | undefined;
   admin: boolean | undefined;
   created_at: string | undefined;
 }

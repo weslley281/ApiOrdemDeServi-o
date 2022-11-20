@@ -1,4 +1,4 @@
-import { con } from '../../../../database/db';
+import { userModel } from '../../../../database/models/users';
 import { User } from '../../model/User';
 import { ICreateUserDTO, IUserRepository } from '../IUsersPepository';
 
@@ -13,123 +13,53 @@ class UsersRepository implements IUserRepository {
     return UsersRepository.INSTANCE;
   }
 
-  create({
+  async create({
     name,
     phone,
     email,
+    birthday,
     admin,
-    created_at,
     encryptedpassword,
-  }: ICreateUserDTO): User {
-    const user = new User();
-
-    Object.assign(user, {
-      name,
-      phone,
-      email,
-      admin,
-      encryptedpassword,
-      created_at,
-    });
-
-    const insert = `INSERT INTO users (name, phone, email, admin, password, created_at) VALUES ("${name}", "${phone}", "${email}", ${admin}, "${encryptedpassword}", "${created_at}")`;
-    console.log('O sql gerado é ' + insert);
-
-    con.query(insert, function (err: any, rows: any) {
-      if (err) throw err;
-      console.log('Usuário cadastrado com sucesso');
+  }: ICreateUserDTO): Promise<User> {
+    const [user, created]: any = await userModel.findOrCreate({
+      where: { email: !email },
+      defaults: {
+        name,
+        phone,
+        email,
+        birthday,
+        admin,
+        password: encryptedpassword,
+      },
     });
 
     return user;
   }
 
   async findById(user_id: number): Promise<User> {
-    let user: any;
-    const select = `Select * FROM users WHERE user_id = "${user_id}"`;
-
-    const result = await con.query(select, (err: any, rows: any) => {
-      if (err) {
-        console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
-      }
-
-      // const resultObject = Object.keys(rows).forEach(function (key) {
-      //   // console.log(JSON.stringify(rows[key]));
-      // });
-
-      console.log('Usuários buscado com sucesso com sucesso');
-
-      const { name, phone, email } = rows[0];
-
-      const thisResults = {
-        name: name,
-        phone: phone,
-        email: email,
-      };
-
-      console.log(name, phone, email);
-      console.log(thisResults);
-
-      return thisResults;
-    });
-
-    user = result;
-
-    console.log('Essas são as linhas ' + typeof result);
+    const user: any = await userModel.findOne({ where: { user_id: user_id } });
 
     return user;
   }
 
   async findByEmail(email: string): Promise<User> {
-    let user: any;
-    const select = `Select * FROM users WHERE user_id = "${email}"`;
-
-    await con.query(select, (err: any, rows: any) => {
-      if (err) {
-        console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
-      }
-
-      user = rows;
-
-      console.log('Usuários buscado com sucesso com sucesso');
-    });
+    const user: any = await userModel.findOne({ where: { email: email } });
 
     return user;
   }
 
-  turnAdmin(user: User): User {
-    let receivedUser: any;
-    const update = `UPDATE users SET admin = ${user.admin} WHERE user_id = "${user.user_id}"`;
-
-    con.query(update, (err: any, rows: any) => {
-      if (err) {
-        console.log(
-          `Erro ao tornar usuário em administrado no banco\nDetalhes: ${err}`
-        );
-
-        receivedUser = rows;
-
-        console.log('Permissões de usuário alterado com sucesso com sucesso');
-      }
-    });
-
-    return receivedUser;
+  async turnAdmin(user: User): Promise<User> {
+    const userChanged: any = await userModel.update(
+      { admin: !user.admin },
+      { where: { user_id: user.user_id } }
+    );
+    return userChanged;
   }
 
-  list(): User[] {
-    let users: any;
-    const select = `Select * FROM users`;
+  async findAllUser(): Promise<User[]> {
+    const user: any = await userModel.findAll();
 
-    con.query(select, (err: any, rows: any) => {
-      if (err) {
-        console.log(`Erro ao buscar usuários no banco\nDetalhes: ${err}`);
-      }
-
-      users = rows;
-
-      console.log('Usuários buscado com sucesso com sucesso');
-    });
-
-    return users;
+    return user;
   }
 }
 

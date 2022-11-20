@@ -5,24 +5,23 @@ interface IRequest {
   name: string;
   phone: string;
   email: string;
+  birthday: string;
   admin: boolean;
   encryptedpassword: string;
-  created_at: string;
 }
 
 class CreateUserUseCase {
   constructor(private usersRepository: IUserRepository) {}
 
-  execute({
+  async execute({
     name,
     phone,
     email,
+    birthday,
     admin,
     encryptedpassword,
-    created_at,
-  }: IRequest): User {
-    const userAlreadyExists = this.usersRepository.findByEmail(email);
-    console.log('verdadeiro ? ' + userAlreadyExists);
+  }: IRequest): Promise<User> {
+    const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) throw new Error('User already exists');
 
@@ -30,9 +29,9 @@ class CreateUserUseCase {
       name,
       phone,
       email,
+      birthday,
       admin,
       encryptedpassword,
-      created_at,
     });
   }
 }

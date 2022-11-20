@@ -3,9 +3,11 @@ interface ICreateUserDTO {
   name: string;
   phone: string;
   email: string;
+  birthday: string;
   admin: boolean;
   encryptedpassword: string;
-  created_at: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export { ICreateUserDTO };

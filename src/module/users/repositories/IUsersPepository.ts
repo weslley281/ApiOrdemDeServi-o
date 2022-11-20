@@ -6,14 +6,14 @@ interface IUserRepository {
     name,
     phone,
     email,
+    birthday,
     admin,
     encryptedpassword,
-    created_at,
-  }: ICreateUserDTO): User;
+  }: ICreateUserDTO): Promise<User>;
   findById(user_id: number): Promise<User>;
   findByEmail(email: string): Promise<User>;
-  turnAdmin(user: User): User;
-  list(): User[];
+  turnAdmin(user: User): Promise<User>;
+  findAllUser(): Promise<User[]>;
 }
 
 export { IUserRepository, ICreateUserDTO };

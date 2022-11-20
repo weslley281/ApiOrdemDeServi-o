@@ -5,24 +5,24 @@ import { CreateUserUseCase } from './CreateUserUseCase';
 class CreateUserController {
   constructor(private createUserUseCase: CreateUserUseCase) {}
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const { name, phone, email, admin, password, created_at } = request.body;
+      const { name, phone, email, admin, birthday, password } = request.body;
 
       const encryptedpassword = encryptPassword(password);
 
-      const user = this.createUserUseCase.execute({
+      const user = await this.createUserUseCase.execute({
         name,
         phone,
         email,
+        birthday,
         admin,
         encryptedpassword,
-        created_at,
       });
 
       return response.status(201).json(user);
     } catch (error: any) {
-      console.log(`Erro ao cadastrar usuário, mais detalhes: ${error}`);
+      console.log(`Error registering user, more details: ${error}`);
       return response.status(400).json({ error: error.error });
     }
   }

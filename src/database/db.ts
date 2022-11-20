@@ -1,30 +1,14 @@
-const mysql = require('mysql');
+import { Sequelize } from 'sequelize';
 
-const con = mysql.createConnection({
+const connection = new Sequelize('OrderOfService', 'root', '', {
   host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'OrderOfService',
+  dialect: 'mysql',
 });
 
-function establishConnection() {
-  con.connect(function (err: any) {
-    if (err) {
-      console.log('Erro to establish connection...', err);
-      return;
-    }
-    console.log('Connected successfull to db');
+function createConnectionDataBase(connection: Sequelize) {
+  return connection.authenticate().then(() => {
+    console.log('*******Connection made to the database!******* ');
   });
 }
 
-function finishConnection(con: any) {
-  con.end((err: Error) => {
-    if (err) {
-      console.log('Erro to finish connection...', err);
-      return;
-    }
-    console.log('The connection was finish...');
-  });
-}
-
-export { con, establishConnection, finishConnection };
+export { connection, createConnectionDataBase };
