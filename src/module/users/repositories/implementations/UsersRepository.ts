@@ -36,6 +36,35 @@ class UsersRepository implements IUserRepository {
     return user;
   }
 
+  async update({
+    user_id,
+    name,
+    phone,
+    email,
+    birthday,
+    admin,
+    encryptedpassword,
+  }: ICreateUserDTO): Promise<Object> {
+    const user: any = await userModel.update(
+      { name, phone, email, birthday, admin, password: encryptedpassword },
+      { where: { user_id: user_id } }
+    );
+
+    if (user) {
+      return {
+        user_id,
+        name,
+        phone,
+        email,
+        birthday,
+        admin,
+        encryptedpassword,
+      };
+    } else {
+      return { message: 'Error' };
+    }
+  }
+
   async findById(user_id: number): Promise<User> {
     const user: any = await userModel.findOne({ where: { user_id: user_id } });
 

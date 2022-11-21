@@ -100,6 +100,72 @@
         }
       }
     },
+    "/users/update": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update a user",
+        "description": "To create a new user, add the user_id, name, phone, email, birthday, admin and password fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user_id",
+                  "name",
+                  "phone",
+                  "email",
+                  "birthday",
+                  "admin",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  },
+                  "admin": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "user_id": 1,
+                  "name": "Fulano de Tal",
+                  "phone": "(65)99123-4567",
+                  "email": "fulano@gmail.com",
+                  "birthday": "1995-11-28",
+                  "admin": false,
+                  "password": "123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
     "/clients": {
       "post": {
         "tags": ["Clients"],

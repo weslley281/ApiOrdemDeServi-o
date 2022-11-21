@@ -1,17 +1,19 @@
-import { Response, Request } from 'express';
+import { Request, Response } from 'express';
 import { encryptPassword } from '../encryptPassword/encryptPassword';
-import { CreateUserUseCase } from './CreateUserUseCase';
+import { UpdateUserUseCase } from './updateUserUseCase';
 
-class CreateUserController {
-  constructor(private createUserUseCase: CreateUserUseCase) {}
+class UpdateUserController {
+  constructor(private updateUserUseCase: UpdateUserUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const { name, phone, email, admin, birthday, password } = request.body;
+      const { user_id, name, phone, email, admin, birthday, password } =
+        request.body;
 
       const encryptedpassword = encryptPassword(password);
 
-      const user = await this.createUserUseCase.execute({
+      const user = await this.updateUserUseCase.execute({
+        user_id,
         name,
         phone,
         email,
@@ -27,4 +29,4 @@ class CreateUserController {
   }
 }
 
-export { CreateUserController };
+export { UpdateUserController };

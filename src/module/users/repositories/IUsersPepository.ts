@@ -10,6 +10,14 @@ interface IUserRepository {
     admin,
     encryptedpassword,
   }: ICreateUserDTO): Promise<User>;
+  update({
+    name,
+    phone,
+    email,
+    birthday,
+    admin,
+    encryptedpassword,
+  }: ICreateUserDTO): Promise<Object>;
   findById(user_id: number): Promise<User>;
   findByEmail(email: string): Promise<User>;
   turnAdmin(user: User): Promise<User>;
