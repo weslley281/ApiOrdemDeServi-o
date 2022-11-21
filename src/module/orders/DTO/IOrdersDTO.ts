@@ -1,6 +1,7 @@
 interface IOrdersDTO {
   order_id?: number;
   user_id: number;
+  client_id: number;
   description: string;
   customerReport: string;
   diagnosis?: string;
@@ -8,9 +9,11 @@ interface IOrdersDTO {
   serviceValue?: number;
   sparePartsValue?: number;
   status: number;
-  finishedAt?: string;
-  createdAt: string;
-  UpdatedAt: string;
+  finisheAt?: string;
+  finished: boolean;
+  finishedAt?: boolean;
+  createdAt?: string;
+  UpdatedAt?: string;
 }
 
 export { IOrdersDTO };

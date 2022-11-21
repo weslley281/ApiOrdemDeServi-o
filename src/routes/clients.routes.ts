@@ -1,4 +1,4 @@
-import { request, response, Router } from 'express';
+import { Router } from 'express';
 import { createClientsController } from '../module/clients/useCases/createClients';
 
 const clientsRoutes = Router();

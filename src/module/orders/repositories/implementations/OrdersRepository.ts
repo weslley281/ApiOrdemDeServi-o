@@ -4,8 +4,19 @@ import { Orders } from '../../models/Order';
 import { IOrdersRepository } from '../IOrdersRepository';
 
 class OrdersRepository implements IOrdersRepository {
+  private static INSTANCE: OrdersRepository;
+
+  public static getInstance() {
+    if (!OrdersRepository.INSTANCE) {
+      OrdersRepository.INSTANCE = new OrdersRepository();
+    }
+
+    return OrdersRepository.INSTANCE;
+  }
+
   async create({
     user_id,
+    client_id,
     description,
     customerReport,
     diagnosis,
@@ -13,16 +24,21 @@ class OrdersRepository implements IOrdersRepository {
     serviceValue,
     sparePartsValue,
     status,
+    finisheAt,
+    finished,
   }: IOrdersDTO): Promise<Orders> {
-    const [order, created]: any = await orderModel.create({
-      user_id,
-      description,
-      customerReport,
-      diagnosis,
-      warrantyAndNotes,
-      serviceValue,
-      sparePartsValue,
-      status,
+    const order: any = await orderModel.create({
+      user_id: user_id,
+      client_id: client_id,
+      description: description,
+      customerReport: customerReport,
+      diagnosis: diagnosis,
+      warrantyAndNotes: warrantyAndNotes,
+      serviceValue: serviceValue,
+      sparePartsValue: sparePartsValue,
+      status: status,
+      finisheAt: finisheAt,
+      finished: finished,
     });
 
     return order;

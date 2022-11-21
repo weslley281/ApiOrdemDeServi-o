@@ -8,6 +8,10 @@ const orderModel = connection.define('orders', {
     primaryKey: true,
     allowNull: false,
   },
+  client_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -39,6 +43,14 @@ const orderModel = connection.define('orders', {
   status: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  finisheAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  finished: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
   },
   finishedAt: {
     type: DataTypes.DATE,

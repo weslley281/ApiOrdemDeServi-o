@@ -1,4 +1,4 @@
-import { request, response, Router } from 'express';
+import { Router } from 'express';
 import { createUserController } from '../module/users/useCases/createUser';
 import { showUserProfileController } from '../module/users/useCases/showUserProfile';
 import { updateUserController } from '../module/users/useCases/updateUser';

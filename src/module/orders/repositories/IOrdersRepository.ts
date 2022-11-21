@@ -11,6 +11,8 @@ interface IOrdersRepository {
     serviceValue,
     sparePartsValue,
     status,
+    finisheAt,
+    finished,
   }: IOrdersDTO): Promise<Orders>;
   findByID(order_id: number): Promise<Orders>;
   findByIDUser(user_id: number): Promise<Orders>;

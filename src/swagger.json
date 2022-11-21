@@ -251,6 +251,82 @@
           }
         }
       }
+    },
+    "/orders": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Create a new order",
+        "description": "To create a new order, add the user_id, client_id, description, customerReport, diagnosis, warrantyAndNotes, serviceValue, sparePartsValue and finisheAt fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user_id",
+                  "client_id",
+                  "description",
+                  "customerReport",
+                  "diagnosis",
+                  "warrantyAndNotes",
+                  "serviceValue",
+                  "sparePartsValue",
+                  "finisheAt"
+                ],
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer"
+                  },
+                  "client_id": {
+                    "type": "integer"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "customerReport": {
+                    "type": "string"
+                  },
+                  "diagnosis": {
+                    "type": "string"
+                  },
+                  "warrantyAndNotes": {
+                    "type": "string"
+                  },
+                  "serviceValue": {
+                    "type": "number"
+                  },
+                  "sparePartsValue": {
+                    "type": "number"
+                  },
+                  "finisheAt": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "user_id": 1,
+                  "client_id": 1,
+                  "description": "aaa aaa aaaa aaa",
+                  "customerReport": "aaa aaa aaaa aaa",
+                  "diagnosis": "aaa aaa aaaa aaa",
+                  "warrantyAndNotes": "aaa aaa aaaa aaa",
+                  "serviceValue": 399.99,
+                  "sparePartsValue": 299.99,
+                  "finisheAt": "2023-10-23"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   }
 }
