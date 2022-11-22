@@ -43,7 +43,7 @@ Also it's nice to have an editor to work with the code like [VSCode](https://cod
 
 ```bash
 # Clone this repository
-$ git clone <https://github.com/tgmarinho/nlw1>
+$ git clone <https://github.com/weslley281/ApiOrdemDeServi-o.git>
 
 # Access the project folder in the terminal/cmd
 $ cd ApiOrdemDeServi-o
