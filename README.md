@@ -32,3 +32,24 @@
 - [ ] Update a Order of service by ID
 - [ ] Delete a Order of service by ID
 - [x] List All Orders of services
+
+### Prerequisites
+
+Before starting, you will need to have the following tools installed on your machine:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Also it's nice to have an editor to work with the code like [VSCode](https://code.visualstudio.com/)
+
+### Running the Backend (servidor)
+
+```bash
+# Clone this repository
+$ git clone <https://github.com/tgmarinho/nlw1>
+
+# Access the project folder in the terminal/cmd
+$ cd ApiOrdemDeServi-o
+
+# install the dependencies
+$ yarn
+
+# The server will start on port:5000 - go to <http://localhost:5000>
+```
