@@ -14,23 +14,24 @@
 - [x] Cadastro de cliente
 - [ ] Cadastro de produtos
 
-### Features
+### users
 
-<h4>users<h4>
 - [x] Create a new user
 - [x] Get a user by ID
 - [x] Update a user by ID
 - [ ] Delete a user by ID
 - [ ] List All users
 
-<h4>clients<h4>
+### clients
+
 - [x] Create a new client
 - [ ] Get a client by ID
 - [ ] Update a client by ID
 - [ ] Delete a client by ID
 - [ ] List All clients
 
-<h4>Orders Of Service<h4>
+### Orders Of Service
+
 - [x] Create a new Order of service
 - [ ] Get a Order of service by ID
 - [ ] Update a Order of service by ID
