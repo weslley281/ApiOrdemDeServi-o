@@ -4,15 +4,10 @@
     <a href="https://pt-br.reactjs.org/">🔗 Node JS</a>
 </h1>
 <p align="center">🛠️ API to manage service order for service provider companies</p>
+<p align="center">🛠️ This API is being documented using the Swagger UI</p>
 <h4 align="center"> 
 	🚧  API NodeJS 🚀 Under construction...  🚧
 </h4>
-
-### Features
-
-- [x] Cadastro de usuário
-- [x] Cadastro de cliente
-- [ ] Cadastro de produtos
 
 ### users
 
