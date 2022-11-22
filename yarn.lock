@@ -60,6 +60,13 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/connect-flash@^0.0.37":
+  version "0.0.37"
+  resolved "https://registry.yarnpkg.com/@types/connect-flash/-/connect-flash-0.0.37.tgz#e686cbbc80bd0787850b239f4828d62d74066418"
+  integrity sha512-SfmGGYpKvPfZeA+v74FS0HlYqVsx8Inb4d3px99kz2xSMx/IQiz/K/i+7MHTmk/OkE+0suZX108tHrQJ8QEGag==
+  dependencies:
+    "@types/express" "*"
+
 "@types/connect@*":
   version "3.4.35"
   resolved "https://registry.npmjs.org/@types/connect/-/connect-3.4.35.tgz"
@@ -97,7 +104,7 @@
 
 "@types/express-session@^1.17.5":
   version "1.17.5"
-  resolved "https://registry.npmjs.org/@types/express-session/-/express-session-1.17.5.tgz"
+  resolved "https://registry.yarnpkg.com/@types/express-session/-/express-session-1.17.5.tgz#13f48852b4aa60ff595835faeb4b4dda0ba0866e"
   integrity sha512-l0DhkvNVfyUPEEis8fcwbd46VptfA/jmMwHfob2TfDMf3HyPLiB9mKD71LXhz5TMUobODXPD27zXSwtFQLHm+w==
   dependencies:
     "@types/express" "*"
@@ -344,6 +351,11 @@ concat-map@0.0.1:
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
+connect-flash@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/connect-flash/-/connect-flash-0.1.1.tgz#d8630f26d95a7f851f9956b1e8cc6732f3b6aa30"
+  integrity sha512-2rcfELQt/ZMP+SM/pG8PyhJRaLKp+6Hk2IUBNkEit09X+vwn3QsAL3ZbYtxUn7NVPzbMTSLRDhqe0B/eh30RYA==
+
 content-disposition@0.5.4:
   version "0.5.4"
   resolved "https://registry.npmjs.org/content-disposition/-/content-disposition-0.5.4.tgz"
@@ -467,7 +479,7 @@ etag@~1.8.1:
 
 express-session@^1.17.3:
   version "1.17.3"
-  resolved "https://registry.npmjs.org/express-session/-/express-session-1.17.3.tgz"
+  resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.17.3.tgz#14b997a15ed43e5949cb1d073725675dd2777f36"
   integrity sha512-4+otWXlShYlG1Ma+2Jnn+xgKUZTMJ5QD3YvfilX3AcocOAbIkVylSWEklzALe/+Pu4qV6TYBj5GwOBFfdKqLBw==
   dependencies:
     cookie "0.4.2"
