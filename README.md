@@ -10,6 +10,12 @@
 
 ### Features
 
+- [x] Cadastro de usuário
+- [x] Cadastro de cliente
+- [ ] Cadastro de produtos
+
+### Features
+
 <h4>users<h4>
 - [x] Create a new user
 - [x] Get a user by ID
