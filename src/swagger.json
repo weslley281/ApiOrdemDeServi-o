@@ -254,7 +254,7 @@
     },
     "/orders": {
       "post": {
-        "tags": ["Orders"],
+        "tags": ["Orders of Service"],
         "summary": "Create a new order",
         "description": "To create a new order, add the user_id, client_id, description, customerReport, diagnosis, warrantyAndNotes, serviceValue, sparePartsValue and finisheAt fields in the request body.",
         "requestBody": {
@@ -324,6 +324,30 @@
           },
           "400": {
             "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/orders/{user_id}": {
+      "get": {
+        "tags": ["Orders of Service"],
+        "summary": "Get all orders of service if user exists",
+        "description": "To list a orders you need the route param 'user_id'",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "number",
+            "format": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "User not exists"
           }
         }
       }

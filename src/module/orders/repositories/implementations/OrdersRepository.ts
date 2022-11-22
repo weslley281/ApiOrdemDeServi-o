@@ -62,7 +62,7 @@ class OrdersRepository implements IOrdersRepository {
 
   async listOrders(): Promise<Orders[]> {
     const orders: any = await orderModel.findAll();
-
+    console.log('chegou aqui 1');
     return orders;
   }
 }
