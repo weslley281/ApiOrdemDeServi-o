@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createOrdersController } from '../module/orders/useCases/createUser';
+import { createOrdersController } from '../module/orders/useCases/createOrder';
 
 const ordersRoutes = Router();
 
