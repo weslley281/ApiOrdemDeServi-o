@@ -8,6 +8,7 @@ import { createTableOrder, orderModel } from './database/models/orders';
 import { clientModel, createTableClients } from './database/models/clients';
 import { clientsRoutes } from './routes/clients.routes';
 import { ordersRoutes } from './routes/orders.routes';
+import { authenticateUserRoutes } from './routes/authenticate.routes';
 
 createConnectionDataBase(connection);
 createTableUser(userModel);
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/users', usersRoutes);
 app.use('/clients', clientsRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/sessions', authenticateUserRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

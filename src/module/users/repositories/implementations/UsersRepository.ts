@@ -21,16 +21,13 @@ class UsersRepository implements IUserRepository {
     admin,
     password,
   }: ICreateUserDTO): Promise<User> {
-    const [user, created]: any = await userModel.findOrCreate({
-      where: { email: !email },
-      defaults: {
-        name,
-        phone,
-        email,
-        birthday,
-        admin,
-        password,
-      },
+    const user: any = await userModel.create({
+      name,
+      phone,
+      email,
+      birthday,
+      admin,
+      password,
     });
 
     return user;

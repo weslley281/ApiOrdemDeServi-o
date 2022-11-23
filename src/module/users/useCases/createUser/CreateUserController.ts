@@ -9,15 +9,13 @@ class CreateUserController {
     try {
       const { name, phone, email, admin, birthday, password } = request.body;
 
-      const encryptedpassword = encryptPassword(password);
-
       const user = await this.createUserUseCase.execute({
         name,
         phone,
         email,
         birthday,
         admin,
-        encryptedpassword,
+        password,
       });
 
       return response.status(201).json(user);

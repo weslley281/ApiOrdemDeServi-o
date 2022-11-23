@@ -1,5 +1,6 @@
 import { User } from '../../model/User';
 import { IUserRepository } from '../../repositories/IUsersPepository';
+import { hash } from 'bcrypt';
 
 interface IRequest {
   name: string;
@@ -25,13 +26,15 @@ class CreateUserUseCase {
 
     if (userAlreadyExists) throw new Error('User already exists');
 
+    const passwordHash = await hash(password, 8);
+
     return await this.usersRepository.create({
       name,
       phone,
       email,
       birthday,
       admin,
-      password,
+      password: passwordHash,
     });
   }
 }
