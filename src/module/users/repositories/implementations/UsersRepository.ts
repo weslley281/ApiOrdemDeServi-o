@@ -19,7 +19,7 @@ class UsersRepository implements IUserRepository {
     email,
     birthday,
     admin,
-    encryptedpassword,
+    password,
   }: ICreateUserDTO): Promise<User> {
     const [user, created]: any = await userModel.findOrCreate({
       where: { email: !email },
@@ -29,7 +29,7 @@ class UsersRepository implements IUserRepository {
         email,
         birthday,
         admin,
-        password: encryptedpassword,
+        password,
       },
     });
 
@@ -43,10 +43,10 @@ class UsersRepository implements IUserRepository {
     email,
     birthday,
     admin,
-    encryptedpassword,
+    password,
   }: ICreateUserDTO): Promise<Object> {
     const user: any = await userModel.update(
-      { name, phone, email, birthday, admin, password: encryptedpassword },
+      { name, phone, email, birthday, admin, password: password },
       { where: { user_id: user_id } }
     );
 
@@ -58,7 +58,7 @@ class UsersRepository implements IUserRepository {
         email,
         birthday,
         admin,
-        encryptedpassword,
+        password,
       };
     } else {
       return { message: 'Error' };

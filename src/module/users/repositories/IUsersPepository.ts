@@ -8,7 +8,7 @@ interface IUserRepository {
     email,
     birthday,
     admin,
-    encryptedpassword,
+    password,
   }: ICreateUserDTO): Promise<User>;
   update({
     name,
@@ -16,7 +16,7 @@ interface IUserRepository {
     email,
     birthday,
     admin,
-    encryptedpassword,
+    password,
   }: ICreateUserDTO): Promise<Object>;
   findById(user_id: number): Promise<User>;
   findByEmail(email: string): Promise<User>;

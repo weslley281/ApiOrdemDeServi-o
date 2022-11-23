@@ -5,6 +5,7 @@ class User {
   email: string | undefined;
   birthday: string | undefined;
   admin: boolean | undefined;
+  password: string | undefined;
 }
 
 export { User };

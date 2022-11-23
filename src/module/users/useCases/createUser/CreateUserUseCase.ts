@@ -7,7 +7,7 @@ interface IRequest {
   email: string;
   birthday: string;
   admin: boolean;
-  encryptedpassword: string;
+  password: string;
 }
 
 class CreateUserUseCase {
@@ -19,7 +19,7 @@ class CreateUserUseCase {
     email,
     birthday,
     admin,
-    encryptedpassword,
+    password,
   }: IRequest): Promise<User> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
@@ -31,7 +31,7 @@ class CreateUserUseCase {
       email,
       birthday,
       admin,
-      encryptedpassword,
+      password,
     });
   }
 }
