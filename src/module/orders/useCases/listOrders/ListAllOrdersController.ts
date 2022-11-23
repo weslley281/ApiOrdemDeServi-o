@@ -13,11 +13,9 @@ class ListAllOrdersController {
       const orders = await this.listAllOrdersUseCase.execute({ user_id: id });
       console.log('A orders são: ', orders);
 
-      return response.status(201).json(orders);
+      return response.status(200).json(orders);
     } catch (error: any) {
       return response.status(400).json({ error: error.message });
-    } finally {
-      console.log('chegou aqui 3');
     }
   }
 }

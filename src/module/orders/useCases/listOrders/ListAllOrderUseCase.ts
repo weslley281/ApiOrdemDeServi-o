@@ -13,7 +13,6 @@ class ListAllOrdersUseCase {
   ) {}
 
   async execute({ user_id }: IRequest): Promise<Orders[]> {
-    console.log('chegou aqui 2 e o id é ' + user_id);
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) throw new Error('User not exists');

@@ -16,6 +16,7 @@
 - [x] Update a user by ID
 - [ ] Delete a user by ID
 - [ ] List All users
+- [x] Create a authetication with jtw
 
 ### clients
 
@@ -23,7 +24,7 @@
 - [ ] Get a client by ID
 - [ ] Update a client by ID
 - [ ] Delete a client by ID
-- [ ] List All clients
+- [x] List All clients
 
 ### Orders Of Service
 
@@ -36,7 +37,7 @@
 ### Prerequisites
 
 Before starting, you will need to have the following tools installed on your machine:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Also it's nice to have an editor to work with the code like [VSCode](https://code.visualstudio.com/)
 
 ### Running the Backend (servidor)
@@ -55,5 +56,3 @@ $ yarn
 ```
 
 ![2022-11-22 (1)](https://user-images.githubusercontent.com/65488214/203371172-87c72ed4-b0a9-4e52-bfc4-2629ffe86cf6.png)
-
-
