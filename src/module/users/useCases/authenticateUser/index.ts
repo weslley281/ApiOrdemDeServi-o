@@ -1,6 +1,6 @@
 import { UsersRepository } from '../../repositories/implementations/UsersRepository';
-import { AuthenticateUserController } from './authenticateController';
-import { AuthenticateUserUseCase } from './authenticateUserUseCase';
+import { AuthenticateUserController } from './AuthenticateController';
+import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 const userRepository = UsersRepository.getInstance();
 const authenticateUserUseCase = new AuthenticateUserUseCase(userRepository);

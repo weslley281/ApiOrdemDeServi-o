@@ -9,6 +9,7 @@ interface IRequest {
 
 interface IResponse {
   user: {
+    user_id: number;
     name: string;
     email: string;
   };
@@ -32,10 +33,16 @@ class AuthenticateUserUseCase {
       expiresIn: '1h',
     });
 
-    return {
-      user,
+    const tokenReturn: IResponse = {
       token,
+      user: {
+        user_id: user.user_id,
+        name: user.name,
+        email: user.email,
+      },
     };
+
+    return tokenReturn;
   }
 }
 
