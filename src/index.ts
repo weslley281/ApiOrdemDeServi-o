@@ -9,6 +9,7 @@ import { clientModel, createTableClients } from './database/models/clients';
 import { clientsRoutes } from './routes/clients.routes';
 import { ordersRoutes } from './routes/orders.routes';
 import { authenticateUserRoutes } from './routes/authenticate.routes';
+import { ErrorMiddleware } from './middlewares/error';
 
 createConnectionDataBase(connection);
 createTableUser(userModel);
@@ -18,6 +19,15 @@ createTableClients(clientModel);
 const app = express();
 
 app.use(express.json());
+app.use(
+  (err: Error, request: Request, response: Response, next: NextFunction) => {
+    if (err instanceof AppError) {
+      return response.status(err.statusCode).json({ message: err.message });
+    }
+
+    return;
+  }
+);
 
 app.use('/users', usersRoutes);
 app.use('/clients', clientsRoutes);
