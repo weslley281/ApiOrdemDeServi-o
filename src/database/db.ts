@@ -10,6 +10,11 @@ const connection = new Sequelize('orderofservice', 'root', 'Wesv@g28', {
   },
   dialectOptions: {
     encrypt: true,
+    ssl: {
+      ca: require('fs').readFileSync(
+        '../../utils/DigiCertGlobalRootCA.crt.pem'
+      ),
+    },
   },
 });
 
