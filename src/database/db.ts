@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-const connection = new Sequelize('orderofservice', 'root', '', {
+const connection = new Sequelize('orderofservice', 'root', 'Wesv@g28', {
   host: 'localhost',
   dialect: 'mysql',
 });
