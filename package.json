@@ -40,6 +40,9 @@
     "target": "es5",
     "outDir": "dist"
   },
+  "engines": {
+    "yarn": ">=1.22.19"
+  },
   "include": [
     "scripts/**/*"
   ]
