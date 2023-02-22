@@ -23,10 +23,12 @@ const userModel = connection.define('users', {
   birthday: {
     type: DataTypes.DATE,
     allowNull: false,
+    unique: true,
   },
   admin: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
+    defaultValue: false,
   },
   password: {
     type: DataTypes.STRING,

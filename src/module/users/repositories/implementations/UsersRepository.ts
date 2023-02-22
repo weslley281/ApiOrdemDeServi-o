@@ -40,10 +40,9 @@ class UsersRepository implements IUserRepository {
     email,
     birthday,
     admin,
-    password,
   }: ICreateUserDTO): Promise<Object> {
     const user: any = await userModel.update(
-      { name, phone, email, birthday, admin, password: password },
+      { name, phone, email, birthday, admin },
       { where: { user_id: user_id } }
     );
 
@@ -55,7 +54,6 @@ class UsersRepository implements IUserRepository {
         email,
         birthday,
         admin,
-        password,
       };
     } else {
       return { message: 'Error' };

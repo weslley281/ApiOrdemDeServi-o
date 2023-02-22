@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { encryptPassword } from '../encryptPassword/encryptPassword';
 import { UpdateUserUseCase } from './updateUserUseCase';
 
 class UpdateUserController {
@@ -9,8 +8,6 @@ class UpdateUserController {
     try {
       const { user_id, name, phone, email, admin, birthday, password } =
         request.body;
-
-      const encryptedpassword = encryptPassword(password);
 
       const user = await this.updateUserUseCase.execute({
         user_id,

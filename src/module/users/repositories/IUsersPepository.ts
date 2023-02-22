@@ -16,7 +16,6 @@ interface IUserRepository {
     email,
     birthday,
     admin,
-    password,
   }: ICreateUserDTO): Promise<Object>;
   findById(user_id: number): Promise<User>;
   findByEmail(email: string): Promise<User>;

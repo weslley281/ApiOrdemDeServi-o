@@ -5,7 +5,7 @@ interface ICreateUserDTO {
   email: string;
   birthday: string;
   admin: boolean;
-  password: string;
+  password?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

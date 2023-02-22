@@ -12,15 +12,7 @@ interface IRequest {
 class UpdateUserUseCase {
   constructor(private userRepository: IUserRepository) {}
 
-  async execute({
-    user_id,
-    name,
-    phone,
-    email,
-    birthday,
-    admin,
-    encryptedpassword,
-  }: IRequest) {
+  async execute({ user_id, name, phone, email, birthday, admin }: IRequest) {
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
     if (userAlreadyExists) {
@@ -31,7 +23,6 @@ class UpdateUserUseCase {
         email,
         birthday,
         admin,
-        encryptedpassword,
       });
     } else {
       throw new Error('User not exists');
