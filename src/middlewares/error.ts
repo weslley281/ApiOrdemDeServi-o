@@ -6,7 +6,7 @@ export async function ErrorMiddleware(
   request: Request,
   response: Response,
   next: NextFunction
-) => {
+) {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({ message: err.message });
   }

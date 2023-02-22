@@ -2,10 +2,11 @@
   "name": "api_ordem_de_servico",
   "version": "1.0.0",
   "description": "aaa",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "author": "Weslley Henrique Vieira Ferraz",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "build": "tsc --build",
     "clean": "tsc --build --clean"
@@ -41,9 +42,16 @@
     "outDir": "dist"
   },
   "engines": {
-    "yarn": ">=1.22.19"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
-  "include": [
-    "scripts/**/*"
-  ]
+  "os": [
+    "linux"
+  ],
+  "private": true,
+  "enginesStrict": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USERNAME/REPO"
+  }
 }

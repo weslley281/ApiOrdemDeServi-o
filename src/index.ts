@@ -2,6 +2,8 @@ import express from 'express';
 import { usersRoutes } from './routes/users.routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from './swagger.json';
+import { NextFunction, Request, Response } from 'express';
+import { AppError } from './errors/AppError';
 import { connection, createConnectionDataBase } from './database/db';
 import { createTableUser, userModel } from './database/models/users';
 import { createTableOrder, orderModel } from './database/models/orders';
@@ -11,7 +13,7 @@ import { ordersRoutes } from './routes/orders.routes';
 import { authenticateUserRoutes } from './routes/authenticate.routes';
 import { ErrorMiddleware } from './middlewares/error';
 
-createConnectionDataBase(connection);
+createConnectionDataBase();
 createTableUser(userModel);
 createTableOrder(orderModel);
 createTableClients(clientModel);
