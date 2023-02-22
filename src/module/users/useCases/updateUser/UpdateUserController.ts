@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UpdateUserUseCase } from './updateUserUseCase';
+import { UpdateUserUseCase } from './UpdateUserUseCase';
 
 class UpdateUserController {
   constructor(private updateUserUseCase: UpdateUserUseCase) {}
@@ -16,7 +16,6 @@ class UpdateUserController {
         email,
         birthday,
         admin,
-        encryptedpassword,
       });
 
       return response.status(201).json(user);

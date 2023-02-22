@@ -7,7 +7,6 @@ interface IRequest {
   email: string;
   birthday: string;
   admin: boolean;
-  encryptedpassword: string;
 }
 class UpdateUserUseCase {
   constructor(private userRepository: IUserRepository) {}

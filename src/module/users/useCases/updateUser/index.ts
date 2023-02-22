@@ -1,6 +1,6 @@
 import { UsersRepository } from '../../repositories/implementations/UsersRepository';
 import { UpdateUserController } from './UpdateUserController';
-import { UpdateUserUseCase } from './updateUserUseCase';
+import { UpdateUserUseCase } from './UpdateUserUseCase';
 
 const userRepository = UsersRepository.getInstance();
 const updateUserUseCase = new UpdateUserUseCase(userRepository);
